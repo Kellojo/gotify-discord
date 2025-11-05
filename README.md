@@ -16,7 +16,7 @@ Using `docker compose`:
 version: "3"
 services:
   gotify-discord:
-    image: ghcr.io/johnwiseheart/gotify-discord:latest
+    image:  ghcr.io/kellojo/gotify-discord:latest
     container_name: gotify-discord
     environment:
       - GOTIFY_HOST=<hostname>
