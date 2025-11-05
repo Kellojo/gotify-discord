@@ -18,7 +18,10 @@ const transformMessage = (message: string) => {
 };
 
 const runServer = (): void => {
-  const ws = new WebSocket(`ws://${GOTIFY_HOST}/stream`, {
+  const url = `ws://${GOTIFY_HOST}/stream`;
+  console.log(`Connecting to Gotify at ${url}`);
+  
+  const ws = new WebSocket(url, {
     headers: { "X-Gotify-Key": GOTIFY_TOKEN },
   });
 
