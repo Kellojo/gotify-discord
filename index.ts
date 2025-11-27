@@ -14,13 +14,15 @@ if (DISCORD_WEBHOOK === undefined) {
 
 const transformMessage = (message: string) => {
   const json = JSON.parse(message);
-  return `_from gotify:_\n# ${json.title}\n${json.message}`;
+  console.log("Transforming message:", json);
+
+  return `${json.message}`;
 };
 
 const runServer = (): void => {
   const url = `ws://${GOTIFY_HOST}/stream`;
   console.log(`Connecting to Gotify at ${url}`);
-  
+
   const ws = new WebSocket(url, {
     headers: { "X-Gotify-Key": GOTIFY_TOKEN },
   });
