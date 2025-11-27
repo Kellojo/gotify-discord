@@ -14,9 +14,7 @@ if (DISCORD_WEBHOOK === undefined) {
 
 const transformMessage = (message: string) => {
   const json = JSON.parse(message);
-  console.log("Transforming message:", json);
-
-  return `${json.message}`;
+  return `${json.title}\n${json.message}`;
 };
 
 const runServer = (): void => {
