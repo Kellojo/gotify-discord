@@ -1,8 +1,15 @@
 import WebSocket from "ws";
 
 const GOTIFY_HOST = process.env.GOTIFY_HOST || "localhost";
-const GOTIFY_TOKEN = process.env.GOTIFY_TOKEN;
+let GOTIFY_TOKEN = process.env.GOTIFY_TOKEN;
+const GOTIFY_TOKEN_FILE = process.env.GOTIFY_TOKEN_FILE;
 const DISCORD_WEBHOOK = process.env.DISCORD_WEBHOOK;
+
+
+if (GOTIFY_TOKEN_FILE !== undefined) {
+    const fs = require("fs");
+    GOTIFY_TOKEN = fs.readFileSync(GOTIFY_TOKEN_FILE, "utf8").trim();
+}
 
 if (GOTIFY_TOKEN === undefined) {
   throw new Error("GOTIFY_TOKEN is required");
